@@ -1,12 +1,10 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace BaGet.Core
+namespace BaGet.Core.Configuration
 {
     public class BaGetOptions
     {
         /// <summary>
         /// The API Key required to authenticate package
-        /// operations. If empty, package operations do not require authentication.
+        /// operations. If <see cref="ApiKeys"/> and  <see cref="ApiKey"/> are not set, package operations do not require authentication.
         /// </summary>
         public string ApiKey { get; set; }
 
@@ -50,5 +48,7 @@ namespace BaGet.Core
         public SearchOptions Search { get; set; }
 
         public MirrorOptions Mirror { get; set; }
+
+        public NugetAuthenticationOptions Authentication { get; set; }
     }
 }

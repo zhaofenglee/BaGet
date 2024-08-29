@@ -1,4 +1,4 @@
-namespace BaGet.Core
+namespace BaGet.Core.Configuration
 {
     /// <summary>
     /// How BaGet should interpret package deletion requests.

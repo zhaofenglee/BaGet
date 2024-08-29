@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BaGet.Core.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

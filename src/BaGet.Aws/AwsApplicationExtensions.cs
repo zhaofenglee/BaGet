@@ -5,6 +5,7 @@ using Amazon.Runtime;
 using Amazon.S3;
 using BaGet.Aws;
 using BaGet.Core;
+using BaGet.Core.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;

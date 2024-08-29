@@ -2,7 +2,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BaGet.Core;
+using BaGet.Core.Authentication;
 using BaGet.Protocol.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Versioning;
 
@@ -12,6 +14,7 @@ namespace BaGet.Web
     /// The Package Content resource, used to download content from packages.
     /// See: https://docs.microsoft.com/en-us/nuget/api/package-base-address-resource
     /// </summary>
+    [Authorize(AuthenticationSchemes = AuthenticationConstants.NugetBasicAuthenticationScheme, Policy = AuthenticationConstants.NugetUserPolicy)]
     public class PackageContentController : Controller
     {
         private readonly IPackageContentService _content;

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BaGet.Core
+namespace BaGet.Core.Configuration
 {
     public class MirrorOptions : IValidatableObject
     {

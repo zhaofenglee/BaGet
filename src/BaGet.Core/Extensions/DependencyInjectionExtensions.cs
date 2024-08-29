@@ -2,6 +2,8 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using BaGet.Core.Authentication;
+using BaGet.Core.Configuration;
 using BaGet.Protocol;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

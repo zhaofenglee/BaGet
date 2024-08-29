@@ -1,6 +1,9 @@
 using System;
 using BaGet.Core;
+using BaGet.Core.Authentication;
+using BaGet.Core.Configuration;
 using BaGet.Web;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +39,24 @@ namespace BaGet
             services.AddTransient<IConfigureOptions<ForwardedHeadersOptions>, ConfigureBaGetOptions>();
             services.AddTransient<IConfigureOptions<IISServerOptions>, ConfigureBaGetOptions>();
             services.AddTransient<IValidateOptions<BaGetOptions>, ConfigureBaGetOptions>();
+
+            services.AddAuthentication(options =>
+            {
+                // Breaks existing tests if the contains check is not here.
+                if (!options.SchemeMap.ContainsKey(AuthenticationConstants.NugetBasicAuthenticationScheme))
+                {
+                    options.AddScheme<NugetBasicAuthenticationHandler>(AuthenticationConstants.NugetBasicAuthenticationScheme, AuthenticationConstants.NugetBasicAuthenticationScheme);
+                    options.DefaultAuthenticateScheme = AuthenticationConstants.NugetBasicAuthenticationScheme;
+                    options.DefaultChallengeScheme = AuthenticationConstants.NugetBasicAuthenticationScheme;
+                }
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AuthenticationConstants.NugetUserPolicy, policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                });
+            });
 
             services.AddBaGetOptions<IISServerOptions>(nameof(IISServerOptions));
             services.AddBaGetWebApplication(ConfigureBaGetApplication);
@@ -89,7 +110,10 @@ namespace BaGet
             app.UsePathBase(options.PathBase);
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseCors(ConfigureBaGetOptions.CorsPolicy);
             app.UseOperationCancelledMiddleware();

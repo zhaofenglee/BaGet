@@ -1,5 +1,6 @@
 using System;
 using BaGet.Core;
+using BaGet.Core.Configuration;
 using BaGet.Database.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

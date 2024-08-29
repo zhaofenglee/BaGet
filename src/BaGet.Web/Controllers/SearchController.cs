@@ -2,11 +2,14 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BaGet.Core;
+using BaGet.Core.Authentication;
 using BaGet.Protocol.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BaGet.Web
 {
+    [Authorize(AuthenticationSchemes = AuthenticationConstants.NugetBasicAuthenticationScheme, Policy = AuthenticationConstants.NugetUserPolicy)]
     public class SearchController : Controller
     {
         private readonly ISearchService _searchService;

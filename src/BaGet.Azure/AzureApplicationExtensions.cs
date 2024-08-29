@@ -1,6 +1,7 @@
 using System;
 using BaGet.Azure;
 using BaGet.Core;
+using BaGet.Core.Configuration;
 using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Search;
 using Microsoft.Extensions.DependencyInjection;

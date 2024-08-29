@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
-namespace BaGet.Core
+namespace BaGet.Core.Configuration
 {
     public class FileSystemStorageOptions : IValidatableObject
     {

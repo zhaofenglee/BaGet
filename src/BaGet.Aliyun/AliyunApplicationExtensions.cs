@@ -2,6 +2,7 @@ using System;
 using Aliyun.OSS;
 using BaGet.Aliyun;
 using BaGet.Core;
+using BaGet.Core.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
