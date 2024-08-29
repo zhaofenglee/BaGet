@@ -14,7 +14,7 @@ namespace BaGet.Core
 {
     public static partial class DependencyInjectionExtensions
     {
-        public static IServiceCollection AddBaGetApplication(
+        public static BaGetApplication AddBaGetApplication(
             this IServiceCollection services,
             Action<BaGetApplication> configureAction)
         {
@@ -28,8 +28,9 @@ namespace BaGet.Core
 
             services.AddFallbackServices();
 
-            return services;
+            return app;
         }
+
 
         /// <summary>
         /// Configures and validates options.
